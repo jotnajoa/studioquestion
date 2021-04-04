@@ -6,9 +6,9 @@
         <div>{{boro[0]}}</div>
         
         <div class="bargraph" :style="{width: xScale(boro[1]) + 'px'}"></div>
-
       </div>
      </transition-group>
+     <div style='display:none'>{{console}}</div>
     <!-- </div> -->
 </template>
 
@@ -17,7 +17,11 @@ import * as d3 from 'd3'
 export default {
   data () {
     return {
-
+            margin:{top:this.height*0.05,
+            bottom:this.height*0.05,
+            left:this.width*0.05,
+            right:this.width*0.05
+            }
     }
   },
   props:['lotteries','lotteryStats','width'],
@@ -40,8 +44,17 @@ export default {
       let extent = d3.extent(values);
       let xscale = d3.scaleLinear()
       .domain([0,extent[1]])
-      .range([0,this.width*0.8]);
+      .range([this.margin.left,this.width-this.margin.left]);
       return xscale;
+    },
+    console(){
+      if(this.lotteries){
+        console.log(this.lotteries);
+        return this.lotteries
+      }else{
+        console.log('nothing');
+        return 'nothing'
+      }
     }
   }
 }

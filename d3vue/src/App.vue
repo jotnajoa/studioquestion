@@ -1,16 +1,9 @@
 <template>
   <div>
     <h2>Vue vs d3</h2>
-      <div class="filters">
-        <el-checkbox-group v-model="filters">
-          <el-checkbox label="1"></el-checkbox>
-          <el-checkbox label="2"></el-checkbox>
-          <el-checkbox label="3"></el-checkbox>
-          <el-checkbox label="4"></el-checkbox>
-        </el-checkbox-group>
-      </div>
 
-      <div class="section" :style="{width:`${width}px`}">
+
+      <div class="section" :style="{width:`${width}px`,height:`${height*0.8}px`}">
         <vue-only 
         :lotteries="filteredLotteries"
         :lottery-stats="lotteryStats"
@@ -19,6 +12,24 @@
         <!-- lotteries data와 lotteryStats라는 data를 전달한다 -->
         </vue-only>
       </div>
+      <div class="filters">
+        <el-checkbox-group v-model="filters">
+          <el-checkbox label="1"></el-checkbox>
+          <el-checkbox label="2"></el-checkbox>
+          <el-checkbox label="3"></el-checkbox>
+          <el-checkbox label="4"></el-checkbox>
+        </el-checkbox-group>
+      </div>
+    <div class="section">
+      <vue-d3-mixed
+        :lotteries="filteredLotteries"
+        :lottery-stats="lotteryStats"
+        :width="width"
+        :height="height">
+
+      </vue-d3-mixed>
+
+    </div>
   </div>
 </template>
 <script>
@@ -35,7 +46,8 @@ export default {
       lotteryStats: null,
       scrollTop: 0,
       filters: ['1','2','3','4'],
-      width:window.innerWidth*0.8
+      width:window.innerWidth*0.9,
+      height:window.innerHeight*0.9
     }
   },
   components: {
@@ -79,6 +91,7 @@ export default {
   methods: {
     adjustWindow(){
       this.width=window.innerWidth*0.8
+       this.height=window.innerHeight*0.9
     }
   },
   

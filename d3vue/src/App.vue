@@ -2,16 +2,6 @@
   <div>
     <h2>Vue vs d3</h2>
 
-
-      <div class="section" :style="{width:`${width}px`,height:`${height*0.8}px`}">
-        <vue-only 
-        :lotteries="filteredLotteries"
-        :lottery-stats="lotteryStats"
-        :width="width"
-        >
-        <!-- lotteries data와 lotteryStats라는 data를 전달한다 -->
-        </vue-only>
-      </div>
       <div class="filters">
         <el-checkbox-group v-model="filters">
           <el-checkbox label="1"></el-checkbox>
@@ -20,7 +10,17 @@
           <el-checkbox label="4"></el-checkbox>
         </el-checkbox-group>
       </div>
-    <div class="section">
+
+      <div class="section" :style="{width:`${width}px`,height:`${height}px`}">
+        <vue-only 
+        :lotteries="filteredLotteries"
+        :lottery-stats="lotteryStats"
+        :width="width"
+        >
+        </vue-only>
+      </div>
+
+    <div class="section" :style="{width:`${width}px`,height:`${height}px`}">
       <vue-d3-mixed
         :lotteries="filteredLotteries"
         :lottery-stats="lotteryStats"
@@ -30,6 +30,17 @@
       </vue-d3-mixed>
 
     </div>
+      <div class="section" :style="{width:`${width}px`,height:`${height}px`}">
+        <mostly-d
+        :lotteries="filteredLotteries"
+        :lottery-stats="lotteryStats"
+        :width="width"
+        :height="height"
+        >
+
+        </mostly-d>
+
+      </div>
   </div>
 </template>
 <script>
@@ -109,9 +120,14 @@ export default {
   position: relative;
 }
 .section {
-  height: 500px;
   border-bottom: 1px solid #888888;
   margin:auto;
+}
+.filters{
+  position:fixed;
+  left:50%;
+  top:5%;
+  transform:translate(-50%,0)
 }
   
 </style>

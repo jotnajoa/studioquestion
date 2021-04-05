@@ -1,15 +1,15 @@
 <template>
-    <!-- <div class='VueOnly'> -->
-    <transition-group tag='section' class='VueOnly'>
+
+    <transition-group tag='div' class='VueOnly' name='fade'>
       <div class='graphs' v-for="boro in lotteriesByBorough" :key="boro['value']">
-        
+
         <div>{{boro[0]}}</div>
-        
         <div class="bargraph" :style="{width: xScale(boro[1]) + 'px'}"></div>
+
       </div>
      </transition-group>
      <div style='display:none'>{{console}}</div>
-    <!-- </div> -->
+
 </template>
 
 <script>
@@ -49,10 +49,8 @@ export default {
     },
     console(){
       if(this.lotteries){
-        console.log(this.lotteries);
         return this.lotteries
       }else{
-        console.log('nothing');
         return 'nothing'
       }
     }
@@ -71,11 +69,11 @@ export default {
   gap:0 5px;
 }
 
-.v-enter-active{
+.fade-enter-active{
   animation:fade-in 1s 
 }
 
-.v-leave-active{
+.fade-leave-active{
   animation:fade-in 1s reverse
 }
 
@@ -90,6 +88,7 @@ export default {
     width:100%;
   }
 }
+
 
 
 </style>

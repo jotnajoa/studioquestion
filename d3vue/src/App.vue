@@ -31,14 +31,14 @@
 
     </div>
       <div class="section" :style="{width:`${width}px`,height:`${height}px`}">
-        <mostly-d
+        <mostly-d3
         :lotteries="filteredLotteries"
         :lottery-stats="lotteryStats"
         :width="width"
         :height="height"
         >
 
-        </mostly-d>
+        </mostly-d3>
 
       </div>
   </div>

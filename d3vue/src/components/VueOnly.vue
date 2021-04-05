@@ -1,7 +1,7 @@
 <template>
 
     <transition-group tag='div' class='VueOnly' name='fade'>
-      <div class='graphs' v-for="boro in lotteriesByBorough" :key="boro['value']">
+      <div class='graphs' v-for="(boro,index) in lotteriesByBorough" :key="index">
 
         <div>{{boro[0]}}</div>
         <div class="bargraph" :style="{width: xScale(boro[1]) + 'px'}"></div>
